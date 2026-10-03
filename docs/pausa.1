@@ -1,0 +1,78 @@
+.TH PAUSA 1 "2026-06-05" "pausa 0.1.0" "User Commands"
+.SH NAME
+pausa \- full-screen terminal UI Pomodoro-style stopwatch
+.SH SYNOPSIS
+.B pausa
+[\fI\,OPTIONS\/\fR]
+.SH DESCRIPTION
+.B pausa
+is a full-screen terminal UI application that tracks daily study time with a
+zero-starting counter, supports short and endless breaks, and renders a
+GitHub-style heatmap calendar of study history. All data is stored locally in
+SQLite.
+.P
+The interface is keyboard-driven. Focus is automatically managed by the
+terminal; there is no mouse support.
+.SH OPTIONS
+.TP
+.B \-h, \-\-help
+Print help information and exit.
+.TP
+.B \-V, \-\-version
+Print version information and exit.
+.SH KEYBINDINGS
+.TP
+.B Space
+Start, pause, or resume the stopwatch.
+.TP
+.B b
+Start a short break with a countdown timer.
+.TP
+.B B
+Start an endless break (no countdown).
+.TP
+.B h
+Toggle between the stopwatch view and the heatmap calendar.
+.TP
+.B r
+Reset the stopwatch (requires confirmation with \fBy\fR or \fBn\fR).
+.TP
+.B y
+Confirm the current prompt (e.g., reset confirmation).
+.TP
+.B n
+Dismiss the current prompt.
+.TP
+.B q
+Quit the application.
+.TP
+.B Ctrl+C
+Quit the application.
+.TP
+.B Esc
+Quit the application.
+.SH CONFIGURATION
+Configuration is stored in a TOML file at
+.IR ~/.config/pausa/config.toml .
+If the file does not exist, defaults are written on first run.
+.P
+The following keys are supported:
+.TP
+.B short_break_minutes
+Duration of the short break countdown in minutes (default: 10, must be > 0).
+.TP
+.B reset_time
+Daily session reset time in HH:MM 24-hour format (default: "00:00").
+.SH FILES
+.TP
+.I ~/.config/pausa/config.toml
+Configuration file (TOML format).
+.TP
+.I ~/.local/share/pausa/pausa.db
+SQLite database storing sessions and daily totals.
+.SH AUTHORS
+Pausa Contributors.
+.SH REPORTING BUGS
+https://github.com/boseonthecode/pausa/issues
+.SH SEE ALSO
+.BR cargo-install (1)
