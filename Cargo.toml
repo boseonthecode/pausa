@@ -1,0 +1,38 @@
+[package]
+name = "pausa"
+version = "0.1.0"
+edition = "2024"
+description = "A full-screen terminal UI Pomodoro-style stopwatch CLI tool"
+authors = ["Pausa Contributors"]
+license = "MIT"
+repository = "https://github.com/anomalyco/pausa"
+homepage = "https://github.com/anomalyco/pausa"
+keywords = ["pomodoro", "stopwatch", "tui", "terminal", "productivity"]
+categories = ["command-line-utilities", "productivity"]
+readme = "README.md"
+rust-version = "1.95.0"
+exclude = [
+    "CLAUDE.md",
+    "progress.md",
+    "memory-bank/",
+]
+
+[dependencies]
+ratatui = "0.30"
+crossterm = "0.28"
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+chrono = "0.4"
+dirs = "6"
+figlet-rs = "1.0"
+anyhow = "1"
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
